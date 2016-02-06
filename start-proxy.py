@@ -31,6 +31,6 @@ link = ""
 for name in caddyContainers:
     link = link + "--link " + name + ":" + name + " "
 
-command = "/usr/bin/docker " + link + " run -p 80:80 -p 443:443 -v /root/.caddy:/root/.caddy -v /etc/infra.d/proxy.caddyfile:/etc/Caddyfile --name proxy abiosoft/caddy:latest"
+command = "/usr/bin/docker run " + link + " -p 80:80 -p 443:443 -v /root/.caddy:/root/.caddy -v /etc/infra.d/proxy.caddyfile:/etc/Caddyfile --name proxy abiosoft/caddy:latest"
 
 os.system(command)
