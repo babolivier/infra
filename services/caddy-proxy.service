@@ -7,7 +7,7 @@ Requires=docker.service
 TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker rm proxy
-ExecStart=/usr/bin/container-link
+ExecStart=/usr/bin/start-proxy
 ExecStop=/usr/bin/docker stop proxy
 
 [Install]
