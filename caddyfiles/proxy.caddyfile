@@ -1,0 +1,15 @@
+kestrel.brendanabolivier.com {
+    gzip
+    tls contact@brendanabolivier.com
+    proxy / kestrel:80
+}
+
+www.brendanabolivier.com {
+    gzip
+    tls contact@brendanabolivier.com
+    proxy / portfolio:80
+}
+
+brendanabolivier.com {
+    redir https://www.brendanabolivier.com/{uri}
+}

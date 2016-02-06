@@ -1,0 +1,4 @@
+:80
+gzip
+tls off
+browse

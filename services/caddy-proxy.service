@@ -1,0 +1,14 @@
+[Unit]
+Description=Caddy web server (General proxy)
+After=caddy-portfolio.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker rm proxy
+ExecStart=/usr/bin/container-link
+ExecStop=/usr/bin/docker stop proxy
+
+[Install]
+WantedBy=multi-user.target
