@@ -1,8 +1,7 @@
-localhost:80 {
-    gzip
-    tls off
-    git github.com/babolivier/portfolio {
-        branch master
-        hook /portfolio-webhook updatemepls
-    }
+:80
+gzip
+tls off
+git github.com/babolivier/portfolio {
+    branch master
+    hook /portfolio-webhook updatemepls
 }

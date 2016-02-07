@@ -1,0 +1,14 @@
+[Unit]
+Description=Caddy web server (Portfolio)
+After=kestrel.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker rm portfolio
+ExecStart=/usr/bin/docker run -v /etc/infra.d/portfolio.new.caddyfile:/etc/Caddyfile --name portfolio_new abiosoft/caddy:latest
+ExecStop=/usr/bin/docker stop portfolio
+
+[Install]
+WantedBy=multi-user.target

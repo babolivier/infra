@@ -8,6 +8,7 @@ www.brendanabolivier.com {
     gzip
     tls contact@brendanabolivier.com
     proxy / portfolio:80
+    proxy /new portolio_new:80
 }
 
 brendanabolivier.com {
