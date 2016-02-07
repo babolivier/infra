@@ -12,5 +12,5 @@ www.brendanabolivier.com {
 }
 
 brendanabolivier.com {
-    redir https://www.brendanabolivier.com/{uri}
+    redir https://www.brendanabolivier.com{uri}
 }
