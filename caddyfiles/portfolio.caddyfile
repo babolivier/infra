@@ -5,4 +5,5 @@ git github.com/babolivier/portfolio {
     branch old
     hook /portfolio-webhook updatemepls
 }
-
+log stdout
+errors stderr

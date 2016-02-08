@@ -2,15 +2,23 @@ kestrel.brendanabolivier.com {
     gzip
     tls contact@brendanabolivier.com
     proxy / kestrel:80
+    log stdout
+    errors stderr
 }
 
 www.brendanabolivier.com {
     gzip
     tls contact@brendanabolivier.com
-    proxy / portfolio:80
-    proxy /new portolio_new:80
+    proxy / portfolio:80 {
+        except /new
+    }
+    proxy /new portfolio_new:80
+    log stdout
+    errors stderr
 }
 
 brendanabolivier.com {
     redir https://www.brendanabolivier.com{uri}
+    log stdout
+    errors stderr
 }
