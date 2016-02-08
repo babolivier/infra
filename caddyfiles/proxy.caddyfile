@@ -1,10 +1,13 @@
+# Default
+
 kestrel.brendanabolivier.com {
     gzip
     tls contact@brendanabolivier.com
     proxy / kestrel:80
-    log stdout
-    errors stderr
 }
+
+
+# Brendan Abolivier
 
 www.brendanabolivier.com {
     gzip
@@ -13,12 +16,27 @@ www.brendanabolivier.com {
         except /new
     }
     proxy /new portfolio_new:80
-    log stdout
-    errors stderr
 }
 
 brendanabolivier.com {
     redir https://www.brendanabolivier.com{uri}
-    log stdout
-    errors stderr
+}
+
+
+# Evan Guelard
+
+www.evanguelard.fr {
+    gzip
+    tls evan.guelard@gmail.com
+    proxy / evan:80
+}
+
+design.evanguelard.fr {
+    gzip
+    tls evan.guelard@gmail.com
+    proxy / evan_design:80
+}
+
+evanguelard.fr {
+    redir https://www.evanguelard.fr{uri}
 }

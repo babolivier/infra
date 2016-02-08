@@ -1,0 +1,14 @@
+[Unit]
+Description=Caddy web server (Evan)
+after=kestrel.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker rm evan
+ExecStart=/usr/bin/docker run -v /etc/infra.d/evan.caddyfile:/etc/Caddyfile --name evan abiosoft/caddy:php
+ExecStop=/usr/bin/docker stop evan
+
+[Install]
+WantedBy=multi-user.target

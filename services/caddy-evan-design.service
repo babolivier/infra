@@ -1,0 +1,14 @@
+[Unit]
+Description=Caddy web server (Evan Design)
+After=kestrel.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker rm evan_design
+ExecStart=/usr/bin/docker run -v /etc/infra.d/evan.design.caddyfile:/etc/Caddyfile --name evan_design abiosoft/caddy:latest
+ExecStop=/usr/bin/docker stop evan_design
+
+[Install]
+WantedBy=multi-user.target
