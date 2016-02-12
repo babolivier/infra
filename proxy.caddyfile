@@ -1,0 +1,42 @@
+# Default
+
+kestrel.brendanabolivier.com {
+    gzip
+    tls contact@brendanabolivier.com
+    proxy / kestrel:80
+}
+
+
+# Brendan Abolivier
+
+www.brendanabolivier.com {
+    gzip
+    tls contact@brendanabolivier.com
+    proxy / portfolio:80 {
+        except /new
+    }
+    proxy /new portfolio_new:80
+}
+
+brendanabolivier.com {
+    redir https://www.brendanabolivier.com{uri}
+}
+
+
+# Evan Guelard
+
+www.evanguelard.fr {
+    gzip
+    tls evan.guelard@gmail.com
+    proxy / evan:80
+}
+
+design.evanguelard.fr {
+    gzip
+    tls evan.guelard@gmail.com
+    proxy / evan_design:80
+}
+
+evanguelard.fr {
+    redir https://www.evanguelard.fr{uri}
+}
