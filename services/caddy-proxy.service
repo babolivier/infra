@@ -1,7 +1,7 @@
 [Unit]
 Description=Caddy web server (General proxy)
-After=caddy-portfolio.service
-Requires=docker.service
+After=caddy-sites.service
+Requires=caddy-sites.service
 
 [Service]
 TimeoutStartSec=0

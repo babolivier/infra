@@ -1,0 +1,14 @@
+[Unit]
+Description=Caddy web server (Websites)
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=no
+RemainAfterExit=yes
+ExecStart=-/usr/bin/manage-caddy-sites --start
+ExecStop=/usr/bin/manage-caddy-sites --stop
+
+[Install]
+WantedBy=multi-user.target
