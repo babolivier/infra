@@ -1,0 +1,26 @@
+[
+    {
+        "name":"kestrel",
+        "image":"latest"
+    },
+    {
+        "name":"portfolio",
+        "image":"latest"
+    },
+    {
+        "name":"portfolio_new",
+        "image":"latest"
+    },
+    {
+        "name":"evan",
+        "image":"php"
+    },
+    {
+        "name":"evan_design",
+        "image":"latest"
+    },
+    {
+        "name":"foobar",
+        "image":"latest"
+    }
+]

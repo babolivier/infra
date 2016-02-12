@@ -7,7 +7,7 @@ Requires=docker.service
 TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker rm evan
-ExecStart=/usr/bin/docker run -v /etc/infra.d/evan.caddyfile:/etc/Caddyfile --name evan abiosoft/caddy:php
+ExecStart=/usr/bin/docker run -v /etc/infra.d/sites/evan.caddyfile:/etc/Caddyfile --name evan abiosoft/caddy:php
 ExecStop=/usr/bin/docker stop evan
 
 [Install]

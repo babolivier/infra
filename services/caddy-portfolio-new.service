@@ -7,7 +7,7 @@ Requires=docker.service
 TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker rm portfolio_new
-ExecStart=/usr/bin/docker run -v /etc/infra.d/portfolio.new.caddyfile:/etc/Caddyfile --name portfolio_new abiosoft/caddy:latest
+ExecStart=/usr/bin/docker run -v /etc/infra.d/sites/portfolio.new.caddyfile:/etc/Caddyfile --name portfolio_new abiosoft/caddy:latest
 ExecStop=/usr/bin/docker stop portfolio_new
 
 [Install]
