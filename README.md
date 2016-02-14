@@ -24,6 +24,13 @@ All of this is automated thanks to two Python scripts I wrote, [`start-proxy.py`
 
 My ultimate dream about this automation would be to create a web interface allowing me to add a website by just pasting its configuration and clicking a button. I don't care if something like this already exists, after all I'm only doing all of this because I find it fun and challenging. And I know there are chances I'll never get there.
 
+## What's on here?
+
+On the root of this repo, you'll find the README and LICENSE files (obviously), but also the Python scripts described above, among the proxy's config file and the JSON describing the different sites.
+
+Within the `services` directory lie the `systemd` services used to launch everything at startup, and you'll find the sites' configs in the `sites` directory.
+
 ## Feedback and reusability
 
 If you have any question or anything to report on what you see here, please let me know using a GitHub issue or sending me a mail at <infra@brendanabolivier.com>. Also, if you see something interesting around here, please feel free to use my work at your will. It's some side project I work on during my free time, and I'd be honoured if it could be useful to anyone. Everything here is released under a MIT license, so serve yourself! Also, if you want to interact with me about how you're using the work here, or anything else, feel free to contact me by the ways described above :-)
+
