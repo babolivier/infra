@@ -18,9 +18,5 @@
     {
         "name":"evan_design",
         "image":"latest"
-    },
-    {
-        "name":"foobar",
-        "image":"latest"
     }
 ]
