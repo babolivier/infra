@@ -1,5 +1,5 @@
 [Unit]
-Description=Caddy web server (Websites)
+Description=Caddy web server
 After=docker.service
 Requires=docker.service
 
@@ -7,8 +7,10 @@ Requires=docker.service
 TimeoutStartSec=0
 Restart=no
 RemainAfterExit=yes
-ExecStart=-/usr/bin/manage-caddy-sites --start
+ExecStartPre=-/usr/bin/docker rm proxy
+ExecStart=/usr/bin/sh "/usr/bin/manage-caddy-sites --start && /usr/bin/start-proxy"
 ExecStop=/usr/bin/manage-caddy-sites --stop
+ExecStopPost=-/usr/bin/docker stop proxy
 
 [Install]
 WantedBy=multi-user.target
