@@ -4,11 +4,12 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-TimeoutStartSec=0
+Type=oneshot
 Restart=no
 RemainAfterExit=yes
 ExecStartPre=-/usr/bin/docker rm proxy
-ExecStart=/usr/bin/sh "/usr/bin/manage-caddy-sites --start && /usr/bin/start-proxy"
+ExecStart=/usr/bin/manage-caddy-sites --start
+ExecStartPost=/usr/bin/start-proxy
 ExecStop=/usr/bin/manage-caddy-sites --stop
 ExecStopPost=-/usr/bin/docker stop proxy
 
