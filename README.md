@@ -14,7 +14,7 @@ If you don't know this magnificent piece of software that is [Caddy](https://cad
 
 ### How I use it
 
-I prefer to run Caddy through Docker containers, using the image provided by [@abiosoft](https://hub.docker.com/r/abiosoft/caddy/), as I find this way cleaner than manually moving Caddy's binary and config files in `/usr/` and `/etc/` (and also because it's way funnier, yes). I currently use one container by website (yes, I know this is not really well optimised, I'll work on that later), with a reverse proxy acting as a gateway. Docker's `--link` arguments allows me to create a closed LAN between all my containers, so that only the proxy needs to publish ports (which are `:80` and `:443`).
+I prefer to run Caddy through Docker containers, using the image provided by [@abiosoft](https://hub.docker.com/r/abiosoft/caddy/), as I find this way cleaner than manually moving Caddy's binary and config files in `/usr/` and `/etc/` (and also because it's way funnier, yes). I currently use one container by website (yes, I know this is not really well optimised, I'll work on that later), with a reverse proxy acting as a gateway. Docker's `--link` argument (well, its equivalent in the Python API) allows me to create a closed LAN between all my containers, so that only the proxy needs to publish ports (which are `:80` and `:443`).
 
 So, if you followed me correctly up to this point, you understand why the sites' config files (placed in [`sites/`](https://github.com/babolivier/infra/tree/master/sites)) are set to listen on `:80` with no TLS, as it is the proxy who handles both TLS and redirecting request to the right containers (by the way, its config is in [`proxy.caddyfile`](https://github.com/babolivier/infra/blob/master/proxy.caddyfile)).
 
@@ -29,6 +29,14 @@ My ultimate dream about this automation would be to create a web interface allow
 On the root of this repo, you'll find the README and LICENSE files (obviously), but also the Python scripts described above, among the proxy's config file and the JSON describing the different sites.
 
 Within the `services` directory lie the `systemd` services used to launch everything at startup, and you'll find the sites' configs in the `sites` directory.
+
+## What's on the machine?
+
+Everything in the `services` directory comes from `/usr/lib/systemd/system`. Everything in the `sites` directory finds its place in the `/etc/infra.d/sites` directory on the server, while the `proxy.caddyfile` and `sites.json` files are located in the root of `/etc/infra.d`.
+
+Last but not least, the Python scripts are located in `/usr/bin`, with the exact same name but without the `.py` extension.
+
+Now you should understand better the configurations files and the paths in them :-)
 
 ## Feedback and reusability
 
