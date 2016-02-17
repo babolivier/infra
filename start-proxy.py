@@ -56,8 +56,3 @@ container = cli.create_container(
 if container.get("Warnings") is None:
     cli.start(container.get("Id"))
     print("Proxy successfully started with id", container.get("Id"))
-
-
-#command = "/usr/bin/docker run " + link + " -p 80:80 -p 443:443 -v /root/.caddy:/root/.caddy -v /etc/infra.d/proxy.caddyfile:/etc/Caddyfile --name proxy abiosoft/caddy:latest"
-
-#os.system(command)
