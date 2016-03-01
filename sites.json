@@ -18,5 +18,9 @@
     {
         "name":"evan_design",
         "image":"latest"
+    },
+    {
+        "name":"evan_bombercir",
+        "image":"latest"
     }
 ]

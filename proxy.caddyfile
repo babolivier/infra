@@ -28,7 +28,10 @@ brendanabolivier.com {
 www.evanguelard.fr {
     gzip
     tls evan.guelard@gmail.com
-    proxy / evan:80
+    proxy / evan:80 {
+        except /BomberCIR
+    }
+    proxy /BomberCIR evan_bombercir:80
 }
 
 design.evanguelard.fr {
