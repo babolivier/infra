@@ -22,7 +22,7 @@ So, if you followed me correctly up to this point, you understand why the sites'
 
 All of this is automated thanks to two Python scripts I wrote, [`start-proxy.py`](https://github.com/babolivier/infra/blob/master/start-proxy.py) and [`manage-caddy-sites.py`](https://github.com/babolivier/infra/blob/master/manage-caddy-site.py) (this one requires a command-line argument, `--start` or `--stop`). The first one checks the running Docker containers using the Caddy image, and start the proxy with the correct `--link` arguments, while the second one lists websites from the `sites/` directory and start a container for each of them if called with `--start`, or list all the containers running the Caddy image in order to stop and kill them if used with `--stop`. Both of them are ran by `systemd` services (yup, I know...). See how you can do quite a lot with only those two little, dirty-written, scripts.
 
-A third script I wrote is [`monitor-proxy.py`](https://github.com/babolivier/infra/blob/master/monitor-proxy.py), to solve a problem I had: The proxy was crashing randomly. This script is ran through a cron task each 15 minutes.
+A third script I wrote, a Bash script this time, is [`monitor-proxy.sh`](https://github.com/babolivier/infra/blob/master/monitor-proxy.sh), to solve a problem I had: The proxy was crashing randomly. This script is ran through a cron task each 15 minutes.
 
 The [`crontab`](https://github.com/babolivier/infra/blob/master/crontab) file is just a paste of my root user's crontab.
 
