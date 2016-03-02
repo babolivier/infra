@@ -1,12 +1,10 @@
 #!/bin/python
 
 from docker import Client
-import os, sys
-import json
+import os, sys, re
 
-json_file = "/etc/infra.d/sites.json"
-data = open(json_file)
-sites = json.load(data)
+sites_dir = "/etc/infra.d/sites/"
+image_base = "abiosoft/caddy:"
 
 cli = Client(base_url='unix://var/run/docker.sock')
 
@@ -18,14 +16,21 @@ out = {}
 caddyImages = {}
 caddyContainers = []
 
+sites = os.listdir(sites_dir)
+
 if sys.argv[1] == "--start":
     for site in sites:
-        site_name = site["name"]
-        config_file = "/etc/infra.d/sites/" +  site["name"] + ".caddyfile"
-        container_image = "abiosoft/caddy:" + site["image"]
-        print("Working on site", site_name)
-        if os.path.exists(config_file):
-            print("Starting container for", site_name)
+        test_buffer = re.search("(.+)\.caddyfile", site)
+        if test_buffer:
+            site_name = test_buffer.group(1)
+            config_file = sites_dir + test_buffer.group(0)
+            # This condition can be hard to understand as long as you don't realise that an 
+            # Unix command's return code is 0 for a success and 1 for an error
+            if os.system('grep "^startup php" ' + config_file + ' > /dev/null'):
+                container_image = image_base + "latest"
+            else:
+                container_image = image_base + "php"
+            print("Starting container for", site_name, "with image", container_image)
             out = cli.create_container(
                 image=container_image, 
                 name=site_name, 
@@ -40,8 +45,6 @@ if sys.argv[1] == "--start":
             if out.get("Warnings") is None:
                 cli.start(out.get("Id"))
                 print("Container", out.get("Id"), "created and started.")
-        else:
-            print("File", config_file,"doesn't exist.")
 
 elif sys.argv[1] == "--stop":
     # Yup, dirty copy/paste from start-proxy. Should package it someday.
