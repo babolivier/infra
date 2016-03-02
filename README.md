@@ -38,7 +38,7 @@ Within the `services` directory lie the `systemd` services used to launch everyt
 
 Everything in the `services` directory comes from `/usr/lib/systemd/system`. Everything in the `sites` directory finds its place in the `/etc/infra.d/sites` directory on the server, while the `proxy.caddyfile` and `sites.json` files are located in the root of `/etc/infra.d`.
 
-Last but not least, the Python scripts are located in `/usr/bin`, with the exact same name but without the `.py` extension.
+Last but not least, the scripts are located in `/usr/bin`, with the exact same name but without the extension (`.py`, `.sh`, etc).
 
 Now you should understand better the configurations files and the paths in them :-)
 
