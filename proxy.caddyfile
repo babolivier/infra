@@ -22,6 +22,11 @@ brendanabolivier.com {
     redir https://www.brendanabolivier.com{uri}
 }
 
+cozy.brendanabolivier.com {
+    tls contact@brendanabolivier.com
+    proxy / 164.132.224.233:9104
+}
+
 
 # Evan Guelard
 
