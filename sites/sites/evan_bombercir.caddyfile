@@ -1,9 +1,0 @@
-:80
-gzip
-tls off
-git github.com/EvanGuelard/BomberCIR {
-    branch master
-    path BomberCIR
-}
-log stdout
-errors stderr

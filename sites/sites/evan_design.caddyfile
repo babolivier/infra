@@ -1,7 +1,0 @@
-:80
-gzip
-tls off
-git github.com/EvanGuelard/Portfolio-Design
-root design/design
-log stdout
-errors stderr
