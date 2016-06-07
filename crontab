@@ -1,4 +1,2 @@
-0 * * * * /usr/bin/yaourt -Syu --noconfirm > /dev/null
-0 0 * * * /usr/bin/docker pull abiosoft/caddy:latest && /usr/bin/docker pull abiosoft/caddy:php
 0 4 * * * /usr/bin/reboot
 */15 * * * * /usr/bin/monitor-proxy > /dev/null
