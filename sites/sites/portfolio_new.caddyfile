@@ -1,0 +1,10 @@
+:80
+gzip
+tls off
+git github.com/babolivier/portfolio {
+    branch master
+    path new
+    hook /portfolio-webhook updatemepls
+}
+log stdout
+errors stderr

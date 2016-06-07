@@ -1,0 +1,12 @@
+:80
+gzip
+tls off
+git github.com/EvanGuelard/Portfolio
+fastcgi / 127.0.0.1:9000 php
+startup php-fpm
+root evan
+log stdout
+errors {
+    log stderr
+    404 404/index.html
+}
